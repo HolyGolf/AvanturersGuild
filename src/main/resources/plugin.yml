@@ -1,0 +1,7 @@
+name: AvanturersGuild
+version: ${project.version}
+main: avanturersguild.avanturersguild.AvanturersGuild
+api-version: 1.16
+authors: [HolyGolf]
+description: Avanturer's Guild for PixelTask
+website: github.com/HolyGolf
