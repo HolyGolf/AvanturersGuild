@@ -5,3 +5,16 @@ api-version: 1.16
 authors: [HolyGolf]
 description: Avanturer's Guild for PixelTask
 website: github.com/HolyGolf
+
+commands:
+  aguild:
+    description: Help command
+    usage: /<command>
+  aguild setrank:
+    description: Set rank to player
+    usage: /<command>
+    permission: AvanturersGuild.aguild.setrank
+  aguild getrank:
+    description: Get player rank
+    usage: /<command>
+    permission: AvanturersGuild.aguild.getrank

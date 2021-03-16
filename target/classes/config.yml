@@ -1,0 +1,12 @@
+No_permission: '&cYou have no permission to do this!'
+Help_Command: '&6/aguild setrank <player> <rank>\n&6/aguild getrank <player>'
+UndefinedCommand: '&cPlease, try again'
+PlayerNotFound: '&cPlayer not found'
+Ranks:
+  - S:1000
+  - A:800
+  - B:400
+  - C:200
+  - D:100
+  - E:50
+  - F:10
