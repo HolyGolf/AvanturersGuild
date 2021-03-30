@@ -23,15 +23,20 @@ public class commands implements CommandExecutor {
                 Player pl = Bukkit.getPlayerExact(args[1]);
                 if (pl != null) {
                     try {
-                        MySQL.SavePlayer(pl, Integer.parseInt(args[2]));
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    } finally {
                         try {
-                            sender.sendMessage(ChatColor.YELLOW + "Now " + ChatColor.GOLD + pl.getDisplayName() + ChatColor.YELLOW + " rank is " + MySQL.GetRank(pl.getPlayer()) + " (" + new events().ranks_determination(pl.getPlayer()) + ")");
+                            Integer.parseInt(args[2]);
+                            MySQL.SavePlayer(pl, Integer.parseInt(args[2]));
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
+                        } finally {
+                            try {
+                                sender.sendMessage(ChatColor.YELLOW + "Now " + ChatColor.GOLD + pl.getDisplayName() + ChatColor.YELLOW + " rank is " + MySQL.GetRank(pl.getPlayer()) + " (" + new events().ranks_determination(MySQL.GetRank(pl.getPlayer())) + ")");
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
                         }
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("IntError"))));
                     }
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PlayerNotFound"))));
@@ -40,7 +45,7 @@ public class commands implements CommandExecutor {
                 Player pl = Bukkit.getPlayerExact(args[1]);
                 if (pl != null) {
                     try {
-                        sender.sendMessage(ChatColor.GOLD + pl.getDisplayName() + ChatColor.YELLOW + " rank is " + MySQL.GetRank(pl.getPlayer()) + " (" + new events().ranks_determination(Objects.requireNonNull(pl.getPlayer())) + ")");
+                        sender.sendMessage(ChatColor.GOLD + pl.getDisplayName() + ChatColor.YELLOW + " rank is " + MySQL.GetRank(pl.getPlayer()) + " (" + new events().ranks_determination(MySQL.GetRank(pl.getPlayer())) + ")");
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }

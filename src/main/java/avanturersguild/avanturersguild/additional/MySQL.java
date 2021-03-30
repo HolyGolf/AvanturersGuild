@@ -1,5 +1,7 @@
 package avanturersguild.avanturersguild.additional;
 
+import avanturersguild.avanturersguild.AvanturersGuild;
+import jdk.internal.org.jline.reader.ConfigurationPath;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -7,19 +9,17 @@ import org.bukkit.entity.Player;
 import java.sql.*;
 
 public class MySQL {
-    public static String host = "localhost";
-    public static String port = "3306";
-    public static String username = "root";
-    public static String password = "SuperManPoop77";
+
     public static Connection con;
 
     static ConsoleCommandSender console = Bukkit.getConsoleSender();
 
     // connect
     public static void connect() {
+        final AvanturersGuild plugin = AvanturersGuild.getPlugin(AvanturersGuild.class);
         if (!isConnected()) {
             try {
-                con = DriverManager.getConnection("jdbc:mysql://"  + host + ":" + port + "/avanturersguilddata?user=" + username + "&password=" + password + "&useUnicode=true&characterEncoding=UTF-8");
+                con = DriverManager.getConnection("jdbc:mysql://"  + plugin.getConfig().getString("SQLHost") + ":" + plugin.getConfig().getString("SQLPort") + "/avanturersguilddata?user=" + plugin.getConfig().getString("SQLUser") + "&password=" + plugin.getConfig().getString("SQLPass") + "&useUnicode=true&characterEncoding=UTF-8");
                 Statement s = con.createStatement();
                 s.executeUpdate("CREATE DATABASE IF NOT EXISTS avanturersguilddata");
                 s.executeUpdate("CREATE TABLE IF NOT EXISTS avanturersguilddata.rankdata (UUID VARCHAR(255) PRIMARY KEY NOT NULL, Player VARCHAR(255) NOT NULL, PlRank SMALLINT(255) NOT NULL) ENGINE=InnoDB;");
@@ -115,7 +115,7 @@ public class MySQL {
 
     public static int getrank_count() throws  SQLException {
         int total = 0;
-        PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT COUNT(*) AS total FROM avanturersguilddata.ranks");
+        PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT COUNT(ID) AS total FROM avanturersguilddata.ranks");
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             total = rs.getInt("total");

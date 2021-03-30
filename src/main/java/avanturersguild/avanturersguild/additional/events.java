@@ -28,13 +28,13 @@ public class events implements Listener {
         }
     }
 
-    public String ranks_determination(Player player) throws SQLException {
+    public String ranks_determination(Integer lvl) throws SQLException {
         String rank_result = null;
-        if (MySQL.GetRank(player.getPlayer()) < MySQL.minrank()) {
+        if (lvl < MySQL.minrank()) {
             rank_result = "UnRanked";
         } else {
-            for (int i = 1; i < MySQL.getrank_count(); i++) {
-                if (MySQL.GetRank(player.getPlayer()) >= MySQL.getrank_lvl(i)) {
+            for (int i = MySQL.getrank_count(); i > 1; i--) {
+                if (lvl >= MySQL.getrank_lvl(i)) {
                     rank_result = MySQL.getrank_name(i);
                 }
             }
