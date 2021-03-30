@@ -1,7 +1,6 @@
 package avanturersguild.avanturersguild.additional;
 
 import avanturersguild.avanturersguild.AvanturersGuild;
-import jdk.internal.org.jline.reader.ConfigurationPath;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;

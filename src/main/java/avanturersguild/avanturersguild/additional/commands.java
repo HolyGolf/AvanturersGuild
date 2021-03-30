@@ -52,6 +52,12 @@ public class commands implements CommandExecutor {
                 }  else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PlayerNotFound"))));
                 }
+            } else if (args[0].equals("loadworld") && !args[1].isEmpty() && sender.isOp()) {
+                new worlds().CreateWorld(args[1]);
+            } else if (args[0].equals("unloadworld") && !args[1].isEmpty() && sender.isOp()) {
+                new worlds().UnloadWorld(args[1]);
+            } else if (args[0].equals("teleport") && !args[1].isEmpty() && !args[2].isEmpty() && sender.isOp()) {
+                new worlds().TeleportPlayer(((Player) sender).getPlayer(), args[2]);
             } else {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("UndefinedCommand"))));
             }

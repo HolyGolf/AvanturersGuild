@@ -18,3 +18,15 @@ commands:
     description: Get player rank
     usage: /<command>
     permission: AvanturersGuild.aguild.getrank
+  aguild loadworld:
+    description: Loading world
+    usage: /<command>
+    permission: AvanturersGuild.aguild.loadworld
+  aguild unloadworld:
+    description: Unloading world
+    usage: /<command>
+    permission: AvanturersGuild.aguild.unloadworld
+  aguild teleport:
+    description: Teleporting player to world
+    usage: /<command>
+    permission: AvanturersGuild.aguild.teleport

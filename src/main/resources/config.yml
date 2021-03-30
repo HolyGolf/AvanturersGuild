@@ -1,8 +1,9 @@
 No_permission: '&cYou have no permission to do this!'
-Help_Command: '&6/aguild setrank <player> <rank>\n&6/aguild getrank <player>'
+Help_Command: '&6/aguild setrank <player> <rank>, /aguild getrank <player>, /aguild loadworld <world>, /aguild unloadworld <world>, /aguild teleport <player> <world>'
 UndefinedCommand: '&cPlease, try again'
 PlayerNotFound: '&cPlayer not found'
 IntError: '&cPlease, enter integer'
+DefaultWorld: World
 SQLHost: localhost
 SQLPort: 3306
 SQLUser: root
